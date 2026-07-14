@@ -10,7 +10,8 @@ services:
 
   users-api:
     build:
-      context: ./UsersApi
+      context: ../Fiap-UsersApi
+      dockerfile: Users.Api/Dockerfile
     ports:
       - "5001:8080"
     depends_on:
@@ -18,7 +19,7 @@ services:
 
   catalog-api:
     build:
-      context: ./CatalogApi
+      context: ../Fiap-CatalogApi/Catalogo.Api
     ports:
       - "5002:8080"
     depends_on:
@@ -26,7 +27,7 @@ services:
 
   payments-api:
     build:
-      context: ./PaymentsApi
+      context: ../Fiap-PaymentsApi/Payments.Api
     ports:
       - "5003:8080"
     depends_on:
@@ -34,7 +35,7 @@ services:
 
   notifications-api:
     build:
-      context: ./NotificationsApi
+      context: ../Fiap-NotificationsApi/NotificationsApi
     ports:
       - "5004:8080"
     depends_on:
