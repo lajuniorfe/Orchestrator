@@ -3,8 +3,6 @@ kind: Deployment
 
 metadata:
   name: rabbitmq
-  labels:
-    app: rabbitmq
 
 spec:
   replicas: 1
@@ -29,15 +27,13 @@ spec:
 
           env:
             - name: RABBITMQ_DEFAULT_USER
-              value: guest
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-secret
+                  key: username
 
             - name: RABBITMQ_DEFAULT_PASS
-              value: guest
-
-          resources:
-            requests:
-              memory: "256Mi"
-              cpu: "250m"
-            limits:
-              memory: "512Mi"
-              cpu: "500m"
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-secret
+                  key: password
